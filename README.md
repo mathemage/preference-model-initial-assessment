@@ -1,6 +1,14 @@
 # Preference Model Initial Assessment
 
+[![Validation](https://github.com/mathemage/preference-model-initial-assessment/actions/workflows/validation.yml/badge.svg)](https://github.com/mathemage/preference-model-initial-assessment/actions/workflows/validation.yml)
+
 Solution for the [technical assessment](https://docs.google.com/forms/d/e/1FAIpQLSf4mqNST9kC6P41EDtaEYk65k0DptjuSyA_iRBoN10FwalSpw/viewform).
+
+Automated validation runs on every push, pull request, and manual workflow run.
+It executes the
+RL-style judge against `reference_solution/transformer_block.py` and runs
+`pytest tests/ -v` to confirm the environment and reference implementation work
+end to end.
 
 ## Environment: Implement a Llama-Style Transformer Decoder Block from Scratch
 
