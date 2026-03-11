@@ -1,4 +1,6 @@
-# AI Coding Assistant Instructions
+# GitHub Copilot Instructions
+
+These instructions configure and guide GitHub Copilot usage in this repository.
 
 ## Git and GitHub
 

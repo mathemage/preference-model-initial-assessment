@@ -1,4 +1,6 @@
-# GitHub Copilot Instructions
+# Agent Instructions
+
+> Note: `AGENTS.md` is intended for general AI agents and human contributors. GitHub Copilot should use the dedicated configuration file at `.github/copilot-instructions.md`.
 
 ## Git and GitHub
 
