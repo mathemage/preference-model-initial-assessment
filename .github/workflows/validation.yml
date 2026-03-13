@@ -8,6 +8,8 @@ on:
 jobs:
   judge-and-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Check out repository
@@ -26,26 +28,31 @@ jobs:
       - name: Run reference evaluation
         run: |
           python - <<'PY'
-          import re
+          import json
           import subprocess
 
-          result = subprocess.run(
-              [
-                  "python",
-                  "environment/judge.py",
-                  "--solution",
-                  "reference_solution/transformer_block.py",
-              ],
-              check=True,
-              capture_output=True,
-              text=True,
-          )
+          try:
+              result = subprocess.run(
+                  [
+                      "python",
+                      "environment/judge.py",
+                      "--solution",
+                      "reference_solution/transformer_block.py",
+                      "--json",
+                  ],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+          except subprocess.CalledProcessError as e:
+              if e.stdout:
+                  print(e.stdout, end="")
+              if e.stderr:
+                  print(e.stderr, end="")
+              raise SystemExit(e.returncode)
           print(result.stdout, end="")
-          score_line = result.stdout.strip().splitlines()[-1]
-          match = re.search(r"([0-9]+(?:\.[0-9]+)?)$", score_line)
-          if match is None:
-              raise SystemExit(f"Could not parse judge score from: {score_line!r}")
-          score = float(match.group(1))
+          report = json.loads(result.stdout)
+          score = float(report["score"])
           if score < 0.95:
               raise SystemExit(f"Expected judge score >= 0.95, got {score:.4f}")
           print(f"Verified judge score: {score:.4f}")
