@@ -1,6 +1,7 @@
 # Preference Model Initial Assessment
 
 [![Validation](https://github.com/mathemage/preference-model-initial-assessment/actions/workflows/validation.yml/badge.svg)](https://github.com/mathemage/preference-model-initial-assessment/actions/workflows/validation.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)
 
 Solution for the [technical assessment](https://docs.google.com/forms/d/e/1FAIpQLSf4mqNST9kC6P41EDtaEYk65k0DptjuSyA_iRBoN10FwalSpw/viewform).
 
